@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>CalyxOS Wallpapers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      body {
+        background: black;
+      }
+      .gallery {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+      }
+      .gallery img {
+        margin: 1px;
+        box-shadow: 3px 3px 6px 0px rgba(0,0,0,0,0.2);
+        max-width: 200px;
+        max-height: 112px;
+        height: auto;
+        width: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="gallery">
+      <% @images.each do |image| %>
+        <a href="<%= image.image_url %>" target="_new"><img src="<%= image.thumbnail_url %>" /></a>
+      <% end %>
+    </div>
+  </body>
+</html>

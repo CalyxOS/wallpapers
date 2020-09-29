@@ -5,8 +5,14 @@ Public domain and creative commons licensed wallpapers for use with CalyxOS
 Usage:
 
 1. Edit sources.yml
-2. Run ./process-images
-3. See ./wallpapers directory for output
+2. rake
+3. See `./public/` directory for output
+
+## License
+
+All images, and this repository, are licensed under CC BY-SA 3.0, unless otherwise noted.
+
+https://creativecommons.org/licenses/by-sa/3.0/
 
 ## Currently Used Sources
 

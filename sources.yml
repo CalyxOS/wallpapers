@@ -195,3 +195,10 @@
   author: "Unknown"
   tags: "animal, butterfly, pastel"
 
+- description: "Cairn"
+  info_url: "https://launchpad.net/ubuntu-wallpapers"
+  source_url: "https://bazaar.launchpad.net/~ubuntu-art-pkg/ubuntu-wallpapers/ubuntu/download/head:/Cairn_by_Sylvain_Naudin.jpg"
+  license: "CC BY-SA 3.0"
+  author: "Sylvain Naudin"
+  tags: "grey, nature, rocks"
+
