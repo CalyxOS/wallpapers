@@ -5,9 +5,6 @@ cache:
   - original-images/
   - public/
 
-before_script:
-  - apt install wget graphicsmagick
-
 pages:
   stage: deploy
   script:

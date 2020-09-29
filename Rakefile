@@ -9,6 +9,7 @@ MAX_HEIGHT       = 2048
 THUMB_HEIGHT     = 200
 WGET             = `which wget`.chop
 GM               = `which gm`.chop
+CONVERT          = `which convert`.chop
 HOME             = File.expand_path('..', __FILE__)
 CONFIG_FILE      = "#{HOME}/sources.yml"
 SRC_DIR          = "#{HOME}/original-images"
@@ -64,9 +65,13 @@ def resize_image(input:, output:, max_height:)
     end
   end
 
-  FileUtils.cp(input, output)
 
-  ok = system("gm", "mogrify", "-geometry", "x#{max_height}", output)
+  if GM != ""
+    FileUtils.cp(input, output)
+    ok = system("gm", "mogrify", "-geometry", "x#{max_height}", output)
+  else
+    ok = system("convert", input, "-adaptive-resize", "x#{max_height}", output)
+  end
   if ok
     puts "CREATED: %s" % output
     return true
@@ -109,7 +114,9 @@ end
 
 def check_requirements
   if GM == ""
-    puts "MISSING REQUIREMENT: apt install graphicsmagick"
+    if CONVERT == ""
+      puts "MISSING REQUIREMENT: apt install graphicsmagick"
+    end
   end
   if WGET == ""
     puts "MISSING REQUIREMENT: apt install wget"
