@@ -61,7 +61,6 @@ class Image
       if File.exist?(@thumbnail_file)
         IO.popen([CONVERT, @thumbnail_file, '-resize', '1x1', 'txt:']) do |io|
           output = io.read
-          puts output
           match_data = output&.match(/srgb\((.*)\)/)
           if match_data && match_data[1]
             r,g,b = match_data[1]&.split(',')&.map {|i| i&.to_i }
