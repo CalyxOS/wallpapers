@@ -6,7 +6,7 @@ require 'erb'
 require 'uri'
 
 MAX_HEIGHT       = 2048
-THUMB_HEIGHT     = 200
+THUMB_HEIGHT     = 600
 WGET             = `which wget`.chop
 GM               = `which gm`.chop
 CONVERT          = `which convert`.chop
@@ -15,13 +15,17 @@ CONFIG_FILE      = "#{HOME}/sources.yml"
 SRC_DIR          = "#{HOME}/original-images"
 THUMBNAIL_DIR    = "#{HOME}/public/thumbnails"
 WALLPAPER_DIR    = "#{HOME}/public/wallpapers"
-GALLERY_TEMPLATE = "#{HOME}/gallery.html.erb"
+GALLERY_TEMPLATE = "#{HOME}/templates/gallery.html.erb"
 GALLERY_FILE     = "#{HOME}/public/index.html"
+JSON_TEMPLATE    = "#{HOME}/templates/gallery.json.erb"
+JSON_FILE        = "#{HOME}/public/index.json"
+BASE_URL         = "https://calyxos.gitlab.io/wallpapers"
 
 class Image
   attr_reader :thumbnail_url, :image_url, :filename,
               :input_file, :output_file, :thumbnail_file,
-              :source_url
+              :source_url, :author, :tags, :name
+
   def initialize(img)
     @filename       = image_filename(img)
     @input_file     = File.join(SRC_DIR, filename)
@@ -30,11 +34,16 @@ class Image
     @thumbnail_url  = URI.escape File.join("thumbnails", @filename)
     @image_url      = URI.escape File.join("wallpapers", @filename)
     @source_url     = img["source_url"]
+    @author         = img["author"]
+    @tags           = img["tags"]
+    @name           = img["name"]
   end
 
   def process
-    if resize_image(input: input_file, output: output_file, max_height: MAX_HEIGHT)
-      resize_image(input: input_file, output: thumbnail_file, max_height: THUMB_HEIGHT)
+    force = !ENV["FORCE_RENDER_IMAGE"].nil?
+    if resize_image(input: input_file, output: output_file, max_height: MAX_HEIGHT, force: force)
+      force = !ENV["FORCE_RENDER_THUMBNAIL"].nil?
+      resize_image(input: input_file, output: thumbnail_file, max_height: THUMB_HEIGHT, force: force)
     end
   end
 
@@ -47,24 +56,57 @@ class Image
     end
   end
 
+  def hue
+    @hue ||= begin
+      if File.exist?(@thumbnail_file)
+        IO.popen([CONVERT, @thumbnail_file, '-resize', '1x1', 'txt:']) do |io|
+          r,g,b = io.read.match(/srgb\((.*)\)/)[1]&.split(',')&.map {|i| i&.to_i }
+          if r && g && b
+            rgb_to_h(r,g,b)
+          else
+            0
+          end
+        end
+      end
+    end
+  end
+
   private
 
   def image_filename(image)
     extension = File.extname(image["source_url"])
-    "%s - %s%s" % [image["description"], image["author"], extension]
+    "%s - %s%s" % [image["name"], image["author"], extension]
   end
+
+  def rgb_to_h(r,g,b)
+    max = [r,b,g].max
+    min = [r,b,g].min
+    d = (max - min).to_f
+
+    if max == min
+      h = 0
+    else
+      h = case max
+      when r then (g - b) / d + (g < b ? 6 : 0)
+      when g then (b - r) / d + 2
+      when b then (r - g) / d + 4
+      end
+      h /= 6.0
+    end
+    h *= 360
+  end
+
 end
 
-def resize_image(input:, output:, max_height:)
+def resize_image(input:, output:, max_height:, force: false)
   if File.exist?(output)
-    if File.mtime(output) <= File.mtime(input)
+    if force || File.mtime(output) <= File.mtime(input)
       FileUtils.rm(output)
     else
       puts "NO CHANGE: %s" % output
       return true
     end
   end
-
 
   if GM != ""
     FileUtils.cp(input, output)
@@ -98,18 +140,13 @@ rescue Psych::SyntaxError => exc
   exit
 end
 
-def image_filename(image)
-  extension = File.extname(image["source_url"])
-  "%s - %s%s" % [image["description"], image["author"], extension]
-end
-
-def render_gallery(images)
-  renderer = ERB.new(File.read(GALLERY_TEMPLATE))
+def render(images:, template:, output_file:)
+  renderer = ERB.new(File.read(template), nil, "<>")
   @images = images
-  File.open(GALLERY_FILE, 'w') do |f|
+  File.open(output_file, 'w') do |f|
     f.write renderer.result(binding)
   end
-  puts "CREATED: #{GALLERY_FILE}"
+  puts "CREATED: #{output_file}"
 end
 
 def check_requirements
@@ -133,5 +170,7 @@ task :process do
     image.download
     image.process
   end
-  render_gallery(source_images)
+  source_images = source_images.sort {|a,b| a.hue <=> b.hue}
+  render(images: source_images, template: GALLERY_TEMPLATE, output_file: GALLERY_FILE)
+  render(images: source_images, template: JSON_TEMPLATE, output_file: JSON_FILE)
 end

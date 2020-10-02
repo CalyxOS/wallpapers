@@ -2,11 +2,13 @@
 
 Public domain and creative commons licensed wallpapers for use with CalyxOS
 
+See https://calyxos.gitlab.io/wallpapers/
+
 Usage:
 
-1. Edit sources.yml
+1. edit sources.yml
 2. rake
-3. See `./public/` directory for output
+3. open ./public/index.html
 
 ## License
 
@@ -63,3 +65,7 @@ Other sources with questionable license validity:
 | Mi A2       | 1080 x 2160 | 9:18   |
 
 The maximum screen height is 3040px and the maximum width is 1440px.
+
+## See also
+
+https://gitlab.com/calyxos/platform_packages_apps_Backgrounds
