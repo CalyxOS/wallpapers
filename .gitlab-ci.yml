@@ -8,7 +8,7 @@ cache:
 pages:
   stage: deploy
   script:
-  - rake FORCE_RENDER_THUMBNAIL=1
+  - rake
   artifacts:
     paths:
     - public
