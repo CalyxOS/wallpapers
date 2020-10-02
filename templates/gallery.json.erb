@@ -19,7 +19,7 @@
        "url": "<%= File.join BASE_URL, image.image_url %>",
        "thumbUrl": "<%= File.join BASE_URL, image.thumbnail_url %>",
        "name": "<%= image.name %>",
-       "category": "<%= image.tags %>",
+       "category": "<%= image.tags %>"
     }<%= image == @images.last ? "" : "," %>
 <% end %>
   ]
