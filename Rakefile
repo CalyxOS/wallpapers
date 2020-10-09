@@ -80,7 +80,7 @@ class Image
   private
 
   def image_filename(image)
-    extension = File.extname(image["source_url"])
+    extension = File.extname(image["source_url"]).downcase
     "%s - %s%s" % [image["name"], image["author"], extension]
   end
 
@@ -106,7 +106,7 @@ end
 
 def resize_image(input:, output:, max_height:, force: false)
   if File.exist?(output)
-    if force || File.mtime(output) <= File.mtime(input)
+    if force || File.mtime(output) <= File.mtime(input) || File.size(output) == 0
       FileUtils.rm(output)
     else
       puts "NO CHANGE: %s" % output

@@ -26,6 +26,7 @@ https://creativecommons.org/licenses/by-sa/3.0/
 Source with a high degree of confidence regarding the license:
 
 * https://commons.wikimedia.org/wiki/Main_Page
+* https://commons.wikimedia.org/wiki/Commons:Picture_of_the_Year
 * https://bazaar.launchpad.net/~ubuntu-art-pkg/ubuntu-wallpapers/ubuntu/files
 * https://en.wikipedia.org/wiki/Wikipedia:Public_domain_image_resources
 * https://www.loc.gov/free-to-use/
