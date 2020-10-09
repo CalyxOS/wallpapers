@@ -128,6 +128,22 @@
   location: "Dead Sea"
   tags: "landscape, blue, green"
 
+- name: "Anse Takamaka-Mahé"
+  info_url: "https://commons.wikimedia.org/wiki/File:Anse_Takamaka-Mah%C3%A9-Seychelles.jpg"
+  source_url: "https://upload.wikimedia.org/wikipedia/commons/b/b7/Anse_Takamaka-Mah%C3%A9-Seychelles.jpg"
+  license: "CC BY-SA"
+  author: "Tobias Alt"
+  location: "Seychelles"
+  tags: "landscape, blue, green, ocean, tree, beach"
+
+- name: "Anse Source d'Argent"
+  info_url: "https://commons.wikimedia.org/wiki/File:Anse_Source_d%27Argent_2-La_Digue.jpg"
+  source_url: "https://upload.wikimedia.org/wikipedia/commons/f/f6/Anse_Source_d%27Argent_2-La_Digue.jpg"
+  license: "CC BY-SA"
+  author: "Tobias Alt"
+  location: "Seychelles"
+  tags: "landscape, blue, green, ocean, tree, beach"
+
 - name: "Beach"
   info_url: "https://launchpad.net/ubuntu-wallpapers"
   source_url: "https://bazaar.launchpad.net/~ubuntu-art-pkg/ubuntu-wallpapers/ubuntu/download/head:/Beach_by_Renato_Giordanelli.jpg"
