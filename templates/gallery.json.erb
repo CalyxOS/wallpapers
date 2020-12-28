@@ -1,26 +1,30 @@
-{
-<%
-  categories = {}
-  @images.each do |image|
-    image.tags.split(',').each do |tag|
-      categories[tag.strip] = true
-    end
-  end
-  categories = categories.keys
-%>  "Categories": [
-<% categories.each do |cat| %>
-    { "name": "<%= cat %>" }<%= cat == categories.last ? "" : "," %>
-<% end %>
-  ],
-  "Wallpapers": [
+[
 <% @images.each do |image| %>
-    {
-       "author": "<%= image.author %>",
-       "url": "<%= File.join BASE_URL, image.image_url %>",
-       "thumbUrl": "<%= File.join BASE_URL, image.thumbnail_url %>",
-       "name": "<%= image.name %>",
-       "category": "<%= image.tags %>"
-    }<%= image == @images.last ? "" : "," %>
+<% tags = image.tags.split(/[\s,]+/) %>
+  {
+    "id": "<%= image.id %>",
+    "description": "<%= image.name %>",
+    "width": "",
+    "height": "",
+    "color": "<%= image.color %>",
+    "tags": [
+<% tags.each do |tag| %>
+      {"title": "<%= tag %>"}<%= tag == tags.last ? "" : "," %>
 <% end %>
-  ]
-}
+    ],
+    "user": {
+      "name": "<%= image.author %>",
+      "links": {
+        "webUri": "<%= image.info_url %>"
+      }
+    },
+    "urls": {
+      "full": "<%= File.join BASE_URL, image.image_url %>",
+      "thumb": "<%= File.join BASE_URL, image.thumbnail_url %>"
+    },
+    "links": {
+      "webUri": "<%= image.info_url %>"
+    }
+  }<%= image == @images.last ? "" : "," %>
+<% end %>
+]

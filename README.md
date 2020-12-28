@@ -1,6 +1,8 @@
 # CalyxOS Wallpapers
 
-Public domain and creative commons licensed wallpapers for use with CalyxOS
+Public Domain and Creative Commons licensed wallpapers.
+
+This is intended for use with the Blossom Wallpaper app, included with CalyxOS, but obviously you can use this anywhere license compatible.
 
 See https://calyxos.gitlab.io/wallpapers/
 
@@ -16,6 +18,18 @@ All images, and this repository, are licensed under CC BY-SA 3.0, unless otherwi
 
 https://creativecommons.org/licenses/by-sa/3.0/
 
+## JSON API
+
+Running `rake` generates two static galleries for the images: one is rendered as HTML and other as JSON.
+
+The JSON roughly follows a very limited subset of the [Unsplash API](https://unsplash.com/documentation), except it is static and so there is no support for pagination or dynamic queries.
+
+Supported actions:
+
+* `GET /photos`: returns a JSON index of all the photos.
+
+* `GET /photos/:id`: returns JSON for a single photo.
+
 ## Currently Used Sources
 
 * https://commons.wikimedia.org/wiki/Main_Page
@@ -23,7 +37,7 @@ https://creativecommons.org/licenses/by-sa/3.0/
 
 ## Potential Sources
 
-Source with a high degree of confidence regarding the license:
+CC and public domain sources:
 
 * https://commons.wikimedia.org/wiki/Main_Page
 * https://commons.wikimedia.org/wiki/Commons:Picture_of_the_Year
@@ -37,14 +51,9 @@ Other OS wallpaper collections:
 * https://github.com/Antergos/wallpapers-extra
 * https://github.com/elementary/wallpapers
 
-Other sources with questionable license validity:
+## Wallpaper Android Apps
 
-* https://pixabay.com/users/publicdomainarchive-262011/
-* https://unsplash.com/images/stock/public-domain
-* https://www.pexels.com/public-domain-images/
-
-## Apps
-
+* https://github.com/romannurik/muzei
 * https://github.com/danimahardhika/wallpaperboard -- heavily customizable, connect to anything using JSON API.
 * https://github.com/GreyLabsDev/PexWalls -- client for pexels.com
 * https://github.com/biniamHaddish/WallPack -- client for unsplash.com
@@ -70,3 +79,7 @@ The maximum screen height is 3040px and the maximum width is 1440px.
 ## See also
 
 https://gitlab.com/calyxos/platform_packages_apps_Backgrounds
+
+## TODO
+
+* The JSON files do not currently include the height or width of the image.
