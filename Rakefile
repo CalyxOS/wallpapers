@@ -101,12 +101,20 @@ class Image
 
   def image_filename(image)
     extension = File.extname(image["source_url"]).downcase
-    "%s - %s%s" % [image["name"], image["author"], extension]
+    if image["author"] && image["author"] != ""
+      "%s - %s%s" % [image["name"], image["author"], extension]
+    else
+      "%s%s" % [image["name"], extension]
+    end
   end
 
   def image_path(image)
     extension = File.extname(image["source_url"]).downcase
-    path = "%s-%s" % [image["name"], image["author"]]
+    if image["author"] && image["author"] != ""
+      path = "%s-%s" % [image["name"], image["author"]]
+    else
+      path = image["name"]
+    end
     path = path.downcase.gsub(/[\s\.\,]+/, '-').gsub(/\-+/, '-')
     path + extension
   end
