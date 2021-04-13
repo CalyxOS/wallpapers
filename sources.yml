@@ -8,6 +8,16 @@
   location: ""
   tags: ""
 
+- name: "Calyx Lightning Fist Green"
+  source_url: "file://calyxos/lighting-fist-green.png"
+  author: "Calyx"
+  tags: "calyxos, green"
+
+- name: "Calyx Lightning Fist Black"
+  source_url: "file://calyxos/lighting-fist-black.png"
+  author: "Calyx"
+  tags: "calyxos, black"
+
 - name: "Areca trees with vanilla climbers"
   info_url: "https://commons.wikimedia.org/wiki/File:Areca_and_Vanilla_DSC_1306.jpg"
   source_url: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Areca_and_Vanilla_DSC_1306.jpg"
