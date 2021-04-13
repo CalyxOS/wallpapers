@@ -64,8 +64,14 @@ class Image
       puts "SOURCE EXISTS: #{filename}"
       no_change(input_file)
     else
-      puts "FETCHING: #{filename}"
-      wget_download(from: source_url, to: input_file)
+      if source_url =~ /^http/
+        puts "FETCHING: #{filename}"
+        wget_download(from: source_url, to: input_file)
+      elsif source_url =~ /^file/
+        path = File.expand_path(source_url.sub('file://', ''), File.dirname(__FILE__))
+        FileUtils.cp(path, input_file)
+        created input_file
+      end
     end
   end
 
