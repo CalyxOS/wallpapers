@@ -28,6 +28,21 @@
   author: "Calyx"
   tags: "calyxos, black"
 
+- name: "I do not consent"
+  source_url: "file://calyxos/eff_consent.png"
+  author: "EFF"
+  tags: "EFF, black"
+
+- name: "Come back with a warrant"
+  source_url: "file://calyxos/eff_warrant.png"
+  author: "EFF"
+  tags: "EFF, black"
+
+- name: "I never metadata"
+  source_url: "file://calyxos/metadata.png"
+  author: ""
+  tags: "tech"
+
 - name: "Areca trees with vanilla climbers"
   info_url: "https://commons.wikimedia.org/wiki/File:Areca_and_Vanilla_DSC_1306.jpg"
   source_url: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Areca_and_Vanilla_DSC_1306.jpg"
