@@ -78,7 +78,8 @@ The maximum screen height is 3040px and the maximum width is 1440px.
 
 ## See also
 
-https://gitlab.com/calyxos/platform_packages_apps_Backgrounds
+* https://gitlab.com/calyxos/platform_packages_apps_Backgrounds
+* https://gitlab.com/CalyxOS/platform_packages_apps_Backgrounds/-/tree/android11-qpr1/res/drawable-nodpi
 
 ## TODO
 
