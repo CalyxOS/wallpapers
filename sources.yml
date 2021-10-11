@@ -8,16 +8,6 @@
   location: ""
   tags: ""
 
-- name: "Calyx Green Round"
-  source_url: "file://calyxos/calyx_green_round.png"
-  author: "Calyx"
-  tags: "calyxos, green"
-
-- name: "Calyx Dark Round"
-  source_url: "file://calyxos/calyx_dark_round.png"
-  author: "Calyx"
-  tags: "calyxos, black"
-
 - name: "Calyx Green"
   source_url: "file://calyxos/calyx_green.png"
   author: "Calyx"
@@ -42,6 +32,61 @@
   source_url: "file://calyxos/metadata.png"
   author: ""
   tags: "tech"
+
+- name: "Canvas"
+  source_url: "file://calyxos/canvas.jpg"
+  author: "Calyx"
+  tags: "fiber, micro"
+
+- name: "Dark Wood"
+  source_url: "file://calyxos/dark_wood.jpg"
+  author: "Calyx"
+  tags: "nature, micro"
+
+- name: "Douglas Fir"
+  source_url: "file://calyxos/douglas_fir.jpg"
+  author: "Calyx"
+  tags: "nature, micro"
+
+- name: "Evening Bark"
+  source_url: "file://calyxos/evening_bark.jpg"
+  author: "Calyx"
+  tags: "nature, micro"
+
+- name: "Lake Washington"
+  source_url: "file://calyxos/lake_washington.jpg"
+  author: "Calyx"
+  tags: "nature, micro"
+
+- name: "Maple"
+  source_url: "file://calyxos/maple.jpg"
+  author: "Calyx"
+  tags: "nature, micro"
+
+- name: "Wet Pebbles"
+  source_url: "file://calyxos/wet_pebbles.jpg"
+  author: "Calyx"
+  tags: "nature, micro"
+
+- name: "Abstract Cyan"
+  source_url: "file://calyxos/abstract_cyan.jpg"
+  author: ""
+  tags: "abstract"
+
+- name: "Abstract Green"
+  source_url: "file://calyxos/abstract_green.jpg"
+  author: ""
+  tags: "abstract"
+
+- name: "Abstract Purple"
+  source_url: "file://calyxos/abstract_purple.jpg"
+  author: ""
+  tags: "abstract"
+
+- name: "Abstract Red"
+  source_url: "file://calyxos/abstract_red.jpg"
+  author: ""
+  tags: "abstract"
 
 - name: "Areca trees with vanilla climbers"
   info_url: "https://commons.wikimedia.org/wiki/File:Areca_and_Vanilla_DSC_1306.jpg"
