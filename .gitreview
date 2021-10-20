@@ -2,4 +2,4 @@
 host=review.calyxos.org
 port=29418
 project=CalyxOS/wallpapers
-defaultbranch=master
+defaultbranch=main
